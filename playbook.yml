@@ -32,12 +32,6 @@
         build: no
         state: absent
 
-    - name: Prepare to mount /var/run/mysqld directory
-      file:
-        path: "{{ repo_dir }}/volumes/mysqld"
-        state: directory
-        mode: '0777'
-
     - name: docker-compose up
       docker_compose:
         project_src: "{{ repo_dir }}"
