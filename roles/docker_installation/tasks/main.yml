@@ -1,10 +1,19 @@
 ---
 # tasks file for roles/docker
 
+- name: Install epel-release
+  yum:
+    name:
+      - epel-release
+    state: present
+    update_cache: yes
+
 - name: Install python-pip
   yum:
-    name: python-pip
+    name:
+      - python-pip
     state: present
+    update_cache: yes
 
 - name: Upgrade pip
   pip:
