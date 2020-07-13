@@ -18,6 +18,7 @@ services:
       - 3306:3306
     volumes:
       - mysql_data:/var/run/mysql
+      - ${PWD}/db_stuff/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
     environment:
       MYSQL_ROOT_PASSWORD: example
     restart: always
