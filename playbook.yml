@@ -23,10 +23,11 @@
         repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
         dest: "{{ repo_dir }}"
         update: yes
+        depth: 1
 
     # This identical to `compose down` (It deletes volumes)
-    # TODO: uncomment this
-    - name: Preparing to start services
+    # TODO: replace this with something else
+    - name: Delete previous version of the thing
       docker_compose:
         project_src: "{{ repo_dir }}"
         build: no
@@ -37,3 +38,4 @@
         project_src: "{{ repo_dir }}"
         build: yes
         state: present
+        recreate: always

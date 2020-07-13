@@ -1,3 +1,6 @@
 
 [group2]
 server2 ansible_user=root
+
+[group3]
+server3 ansible_user=root
