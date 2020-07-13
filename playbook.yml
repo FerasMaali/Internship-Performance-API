@@ -41,4 +41,5 @@
     - name: docker-compose up
       docker_compose:
         project_src: "{{ repo_dir }}"
+        build: yes
         state: present
