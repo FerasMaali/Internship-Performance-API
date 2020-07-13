@@ -7,7 +7,7 @@ mysql = MySQL()
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'example'
-app.config['MYSQL_DATABASE_DB'] = 'my_db'
+app.config['MYSQL_DATABASE_DB'] = 'performance_api_app'
 app.config['MYSQL_DATABASE_HOST'] = 'db'
 
 mysql.init_app(app)
@@ -19,7 +19,7 @@ def hello():
 @app.route('/data')
 def data():
     cursor = mysql.connect().cursor()
-    cursor.execute("SELECT * from data")
+    cursor.execute("SELECT * from cpu_usage")
     return json.dumps(cursor.fetchall())
 
 if __name__ == "__main__":
