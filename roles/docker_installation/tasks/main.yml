@@ -1,6 +1,25 @@
 ---
 # tasks file for roles/docker
 
+- name: Install python-pip
+  yum:
+    name: python-pip
+    state: present
+
+- name: Upgrade pip
+  pip:
+    name:
+      - pip
+    state: present
+    extra_args: --upgrade
+
+- name: Install docker & docker-compose python libraries
+  pip:
+    name:
+      - docker
+      - docker-compose
+    state: present
+    extra_args: --upgrade
 
 - name: Install yum-utils package
   yum:

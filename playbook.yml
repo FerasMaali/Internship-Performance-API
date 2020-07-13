@@ -1,31 +1,26 @@
 ---
 
-- hosts: all
+- hosts: localhost
   become: yes
 
   vars:
     repo_dir: /Internship-Performance-API
 
-  vars_prompt:
-    - name: githubuser
-      prompt: "Enter Github username"
-      private: no
-
-    - name: githubpassword
-      prompt: "Enter Github password"
-      private: yes
+  vars_files:
+    - github_credentials.yml
 
   roles:
     - docker_installation
 
-  task:
+  tasks:
     - name: Clone the repo
       git:
-        repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/privrepo.git"
+        repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
         dest: "{{ repo_dir }}"
         update: yes
 
     # This identical to `compose down` (It deletes volumes)
+    # TODO: uncomment this
     - name: Preparing to start services
       docker_compose:
         project_src: "{{ repo_dir }}"
@@ -37,8 +32,6 @@
         path: "{{ repo_dir }}/volumes/mysqld"
         state: directory
         mode: '0777'
-        owner: mysql
-        group: mysql
 
     - name: Start db service
       docker_compose:
@@ -47,9 +40,9 @@
           - db
         state: present
 
-    - name: Wait until mysql service is ready (mysqld.sock exists)
-      wait_for:
-        path: "{{ repo_dir }}/volumes/mysqld/mysqld.sock"
+    # - name: Wait until mysql service is ready (mysqld.sock exists)
+    #   wait_for:
+    #     path: "{{ repo_dir }}/volumes/mysqld/mysqld.sock"
 
     - name: Start webapp
       docker_compose:
