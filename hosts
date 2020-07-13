@@ -1,4 +1,6 @@
 
+localhost
+
 [group2]
 server2 ansible_user=root
 

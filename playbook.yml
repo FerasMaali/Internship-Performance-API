@@ -9,21 +9,21 @@
   vars_files:
     - github_credentials.yml
 
-  roles:
-    - docker_installation
+  # roles:
+  #   - docker_installation
 
   tasks:
-    - name: Install git
-      yum:
-        name: git
-        state: present
+    # - name: Install git
+    #   yum:
+    #     name: git
+    #     state: present
 
-    - name: Clone the repo
-      git:
-        repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
-        dest: "{{ repo_dir }}"
-        update: yes
-        depth: 1
+    # - name: Clone the repo
+    #   git:
+    #     repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
+    #     dest: "{{ repo_dir }}"
+    #     update: yes
+    #     depth: 1
 
     # This identical to `compose down` (It deletes volumes)
     # TODO: replace this with something else
