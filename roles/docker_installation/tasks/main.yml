@@ -1,0 +1,27 @@
+---
+# tasks file for roles/docker
+
+
+- name: Install yum-utils package
+  yum:
+    name: yum-utils
+    state: present
+
+- name: Add docker repository
+  command: >
+    yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Install docker
+  yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+
+- name: Start docker
+  service:
+    name: docker
+    state: started
