@@ -22,7 +22,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      # - mysql_data:/var/run/mysql
+      - mysql_data:/var/run/mysql
     environment:
       MYSQL_ROOT_PASSWORD: example
     restart: always
