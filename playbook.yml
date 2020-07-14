@@ -9,8 +9,8 @@
   vars_files:
     - github_credentials.yml
 
-  # roles:
-  #   - docker_installation
+  roles:
+    - docker_installation
 
   tasks:
     - name: Install git
@@ -25,12 +25,10 @@
         update: yes
         depth: 1
 
-    # This identical to `compose down` (It deletes volumes)
     # TODO: replace this with something else
-    - name: Delete previous version of the thing
+    - name: docker-compose down
       docker_compose:
         project_src: "{{ repo_dir }}"
-        build: no
         state: absent
 
     - name: docker-compose up
