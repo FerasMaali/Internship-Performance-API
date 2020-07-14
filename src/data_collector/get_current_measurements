@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+# Move to base directory of the project
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" >/dev/null 2>&1 && pwd  )"
+cd $DIR
+
+. ./collector_functions
+
+echo "cpu_usage: `cpu_usage`"
+echo "used_disk: `used_disk`"
+echo "free_disk: `free_disk`"
+echo "used_mem: `used_mem`"
+echo "free_mem: `free_mem`"

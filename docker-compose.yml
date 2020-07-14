@@ -3,34 +3,58 @@ version: "3.8"
 services:
   web:
     build:
+      # directory of Dockerfile
       context: .
+
+      # Dockerfile name
       dockerfile: Dockerfile.web
+
+    # resulting image tag
     image: ferasmaali/webapp:latest
+
     ports:
       - 5000:5000
     volumes:
       - ./src:/code
     environment:
+      # to wait mysql server until it's ready
       WAIT_HOSTS: db:3306
+
+      # database name
       MYSQL_DATABASE: performance_api_app
+
+      # Get these environment variable from the base system ( in our case, from Ansible )
       MYSQL_USER:
       MYSQL_PASSWORD:
+
+      # database host name
       MYSQL_HOST: db
     restart: on-failure
 
   db:
     build:
+      # directory
       context: .
+
+      # Dockerfile name
       dockerfile: Dockerfile.db
+
+    # resulting image tag
     image: ferasmaali/mysql:latest
     ports:
       - 3306:3306
     volumes:
-      - mysql_data:/var/run/mysql
+      # to persist database data between restarts, failures, ...
+      - mysql_data:/var/lib/mysql
     environment:
+      # database name
       MYSQL_DATABASE: performance_api_app
+
+      # Get these environment variable from the base system ( in our case, from Ansible )
       MYSQL_USER:
       MYSQL_PASSWORD:
+
+      # root accout is not to be used here ...
       MYSQL_RANDOM_ROOT_PASSWORD: mashi
       restart: on-failure
 

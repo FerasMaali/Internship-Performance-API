@@ -1,29 +1,12 @@
 #!/usr/bin/env sh
 
-cpu_usage() {
-	top -bn2 -p1 | grep 'Cpu(s)' | tail -1 | awk -F'[:,]' '{ print $5 }' | awk '{ print 100 - $1}'
-}
-
-used_mem() {
-	free -b | grep Mem | awk '{ print $3 }'
-}
-
-free_mem() {
-	free -b | grep Mem | awk '{ print $7 }'
-}
-
-used_disk() {
-	df -B1 | grep 'centos.*root' | awk '{ print $3 }'
-}
-
-free_disk() {
-	df -B1 | grep 'centos.*root' | awk '{ print $4 }'
-}
-
 # Move to base directory of the project
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" >/dev/null 2>&1 && pwd  )"
 cd $DIR
-cd ..
+
+. ./collector_functions
+
+cd ../..
 
 echo "INSERT INTO \`cpu_usage\` \
 	(\`usage\`) VALUES (`cpu_usage`);" \
