@@ -22,3 +22,11 @@ In this task, I implemented an API that provides info about the system it is run
 | /memory_average  | Returns memory average free and used space in bytes                                                      | { "memory_avg_free_space": 237231668.2449, "memory_avg_used_space": 623844916.2449 } |
 | /storage         | Returns the storage usage metrics retrieved from the database for the last week (free and used in bytes) |                                                                                      |
 | /storage_average | Returns storage average free and used space in bytes                                                     | { "disk_avg_free_space": 4436898619.4747, "disk_avg_used_space": 6290033860.5253 }   |
+
+## Demo
+
+### Control Node (Click to watch)
+[![asciicast](https://asciinema.org/a/T5YD1v1mJSJAsJFdI6XHXhmvh.png)](https://asciinema.org/a/T5YD1v1mJSJAsJFdI6XHXhmvh)
+
+### Target Node (Click to watch)
+[![asciicast](https://asciinema.org/a/tceGVaV1Ezl7oDmcCTOaxkGMU.png)](https://asciinema.org/a/tceGVaV1Ezl7oDmcCTOaxkGMU)
