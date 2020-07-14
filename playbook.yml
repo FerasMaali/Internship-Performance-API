@@ -7,7 +7,7 @@
     repo_dir: /Internship-Performance-API
 
   vars_files:
-    - github_credentials.yml
+    - secrets/github_credentials.yml
     - db_stuff/db_credentials.yml
 
   roles:
