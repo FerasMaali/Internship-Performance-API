@@ -20,7 +20,7 @@ def hello():
 def data():
     cursor = mysql.connect().cursor()
     cursor.execute("SELECT * from cpu_usage")
-    return json.dumps(cursor.fetchall())
+	return json.dumps(cursor.fetchall(), indent=4, sort_keys=True, default=str)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
