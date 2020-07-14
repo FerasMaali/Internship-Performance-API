@@ -1,21 +1,26 @@
 #!/usr/bin/env sh
 
+# returns percentage of cpu usage as a number from 0 to 100
 cpu_usage() {
 	top -bn2 -p1 | grep 'Cpu(s)' | tail -1 | awk -F'[:,]' '{ print $5 }' | awk '{ print 100 - $1}'
 }
 
+# returns used memory space in bytes
 used_mem() {
 	free -b | grep Mem | awk '{ print $3 }'
 }
 
+# returns free memory space in bytes
 free_mem() {
 	free -b | grep Mem | awk '{ print $7 }'
 }
 
+# returns used disk space in bytes
 used_disk() {
 	df -B1 | grep 'centos.*root' | awk '{ print $3 }'
 }
 
+# returns free disk space in bytes
 free_disk() {
 	df -B1 | grep 'centos.*root' | awk '{ print $4 }'
 }

@@ -10,8 +10,8 @@
     - secrets/github_credentials.yml
     - db_stuff/db_credentials.yml
 
-  roles:
-    - docker_installation
+  # roles:
+  #   - docker_installation
 
   tasks:
     - name: Install git
@@ -19,24 +19,23 @@
         name: git
         state: present
 
-    - name: Clone the repo
-      git:
-        repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
-        dest: "{{ repo_dir }}"
-        update: yes
-        depth: 1
+    # - name: Clone the repo
+    #   git:
+    #     repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
+    #     dest: "{{ repo_dir }}"
+    #     update: yes
+    #     depth: 1
 
-    - name: docker-compose down
-      docker_compose:
-        project_src: "{{ repo_dir }}"
-        state: absent
+    # - name: docker-compose down
+    #   docker_compose:
+    #     project_src: "{{ repo_dir }}"
+    #     state: absent
 
     - name: docker-compose up
       docker_compose:
         project_src: "{{ repo_dir }}"
         build: yes
         state: present
-        recreate: always
       environment:
         MYSQL_USER: "{{ mysql_user }}"
         MYSQL_PASSWORD: "{{ mysql_password }}"
@@ -44,7 +43,7 @@
     - name: Create data-collecting cron jobs
       cron:
         name: data collector
-        job: 
+        job: >
           export MYSQL_USER={{ mysql_user }};
           export MYSQL_PASSWORD={{ mysql_password }};
           {{ repo_dir }}/src/collect_data
