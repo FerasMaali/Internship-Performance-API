@@ -1,4 +1,4 @@
-CREATE DATABASE `performance_api_app`;
+CREATE DATABASE IF NOT EXISTS `performance_api_app`;
 USE `performance_api_app`;
 
 CREATE TABLE `cpu_usage`(

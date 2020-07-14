@@ -12,6 +12,10 @@ services:
       - ./src:/code
     environment:
       WAIT_HOSTS: db:3306
+      MYSQL_DATABASE: performance_api_app
+      MYSQL_USER:
+      MYSQL_PASSWORD:
+      MYSQL_HOST: db
     restart: on-failure
 
   db:
@@ -24,8 +28,10 @@ services:
     volumes:
       - mysql_data:/var/run/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: example
-    restart: always
+      MYSQL_DATABASE: performance_api_app
+      MYSQL_USER:
+      MYSQL_PASSWORD:
+      restart: on-failure
 
 volumes:
   mysql_data:
