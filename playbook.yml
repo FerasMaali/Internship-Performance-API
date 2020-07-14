@@ -25,9 +25,7 @@
         dest: "{{ repo_dir }}"
         update: yes
         depth: 1
-        version: improve_security
 
-    # TODO: replace this with something else
     - name: docker-compose down
       docker_compose:
         project_src: "{{ repo_dir }}"

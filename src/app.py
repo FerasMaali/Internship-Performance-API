@@ -20,7 +20,7 @@ def cpu():
 				WHERE taken_at >= DATE_SUB(NOW(), INTERVAL 7 DAY);
 				''')
 	result = list(cursor.fetchall())
-	result = [{'usage': usage, 'take_at': taken_at} for usage, taken_at in result]
+	result = [{'usage': usage, 'taken_at': taken_at} for usage, taken_at in result]
 	return json.dumps(result, indent=4, sort_keys=True, default=str)
 
 @app.route('/cpu_average')
@@ -36,7 +36,7 @@ def memory():
 				WHERE taken_at >= DATE_SUB(NOW(), INTERVAL 7 DAY);
 				''')
 	result = list(cursor.fetchall())
-	result = [{'used_space': used, 'free_space': free, 'take_at': taken_at} for used, free, taken_at in result]
+	result = [{'used_space': used, 'free_space': free, 'taken_at': taken_at} for used, free, taken_at in result]
 	return json.dumps(result, indent=4, sort_keys=True, default=str)
 
 @app.route('/memory_average')
@@ -53,7 +53,7 @@ def storage():
 				WHERE taken_at >= DATE_SUB(NOW(), INTERVAL 7 DAY);
 				''')
 	result = list(cursor.fetchall())
-	result = [{'used_space': used, 'free_space': free, 'take_at': taken_at} for used, free, taken_at in result]
+	result = [{'used_space': used, 'free_space': free, 'taken_at': taken_at} for used, free, taken_at in result]
 	return json.dumps(result, indent=4, sort_keys=True, default=str)
 
 @app.route('/storage_average')
