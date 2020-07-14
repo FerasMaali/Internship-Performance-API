@@ -10,8 +10,8 @@
     - secrets/github_credentials.yml
     - db_stuff/db_credentials.yml
 
-  # roles:
-  #   - docker_installation
+  roles:
+    - docker_installation
 
   tasks:
     - name: Install git
@@ -19,12 +19,12 @@
         name: git
         state: present
 
-    # - name: Clone the repo
-    #   git:
-    #     repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
-    #     dest: "{{ repo_dir }}"
-    #     update: yes
-    #     depth: 1
+    - name: Clone the repo
+      git:
+        repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
+        dest: "{{ repo_dir }}"
+        update: yes
+        depth: 1
 
     - name: docker-compose down
       docker_compose:
