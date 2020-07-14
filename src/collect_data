@@ -27,12 +27,12 @@ cd ..
 
 echo "INSERT INTO \`cpu_usage\` \
 	(\`usage\`) VALUES (`cpu_usage`);" \
-	| docker-compose exec -T db mysql -u root -pexample performance_api_app
+	| docker-compose exec -T db mysql -u root -pexample performance_api_app 2> /dev/null
 
 echo "INSERT INTO \`mem_usage\` \
 	(\`used\`, \`free\`) VALUES (`used_mem`, `free_mem`);" \
-	| docker-compose exec -T db mysql -u root -pexample performance_api_app
+	| docker-compose exec -T db mysql -u root -pexample performance_api_app 2> /dev/null
 
 echo "INSERT INTO \`disk_usage\` \
 	(\`used\`, \`free\`) VALUES (`used_disk`, `free_disk`);" \
-	| docker-compose exec -T db mysql -u root -pexample performance_api_app
+	| docker-compose exec -T db mysql -u root -pexample performance_api_app 2> /dev/null
