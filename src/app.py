@@ -5,11 +5,10 @@ import os, json, subprocess
 app = Flask(__name__)
 mysql = MySQL()
 
-app.config['MYSQL_DATABASE_USER'] = os.environ('MYSQL_USER')
-# TODO: change this BS
-app.config['MYSQL_DATABASE_PASSWORD'] = os.environ('MYSQL_PASSWORD')
-app.config['MYSQL_DATABASE_DB'] = os.environ('MYSQL_DATABASE')
-app.config['MYSQL_DATABASE_HOST'] = os.environ('MYSQL_HOST')
+app.config['MYSQL_DATABASE_USER'] = os.environ[ 'MYSQL_USER' ]
+app.config['MYSQL_DATABASE_PASSWORD'] = os.environ[ 'MYSQL_PASSWORD' ]
+app.config['MYSQL_DATABASE_DB'] = os.environ[ 'MYSQL_DATABASE' ]
+app.config['MYSQL_DATABASE_HOST'] = os.environ[ 'MYSQL_HOST' ]
 
 mysql.init_app(app)
 cursor = mysql.connect().cursor()

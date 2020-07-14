@@ -46,7 +46,7 @@
     - name: Create data-collecting cron jobs
       cron:
         name: data collector
-        job: >
-          "export MYSQL_USER="{{ mysql_user }}";
-           export MYSQL_PASSWORD="{{ mysql_password }}";
-           {{ repo_dir }}/src/collect_data"
+        job: 
+          export MYSQL_USER={{ mysql_user }};
+          export MYSQL_PASSWORD={{ mysql_password }};
+          {{ repo_dir }}/src/collect_data
