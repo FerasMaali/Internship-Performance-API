@@ -4,11 +4,22 @@
 In this task, I implemented an API that provides info about the system it is running on
 
 ## General Structure
+
+### Assumptions
 - The system we are deploying to is assumed to be Centos7
-- Used Python 3 and Flask to build the API
-- Used Mysql to store the collected data
+- We have root privileges on that system
+
+### Web App
+- Used Python 3 and Flask framework to build the API
+- The web app works on a Docker container and was built using [Dockerfile.web](https://github.com/FerasMaali/Internship-Performance-API/blob/master/Dockerfile.web)
+- Used this [script](https://github.com/ufoscout/docker-compose-wait) to make web app wait until db is ready (since it needs some initiallization time)
+
+### Database
+- Used Mysql to store the collected data about the system
 - Used cron jobs and shell scripts to collect data and store it in the DB
-- Each one of the web server and Mysql server was deployed to a separate Docker container
+- Mysql server was deployed to a separate Docker container which was built using [Dockerfile.db](https://github.com/FerasMaali/Internship-Performance-API/blob/master/Dockerfile.db)
+
+### Miscellaneous
 - Used Docker Compose to manage running these two containers
 - Used Ansible to deploy our API
 - Used Ansible Vault to manage our secrets (Mysql & Github credentials)
@@ -27,7 +38,7 @@ In this task, I implemented an API that provides info about the system it is run
 ## Demo
 
 ### Control Node (Click to watch)
-[![asciicast](https://asciinema.org/a/T5YD1v1mJSJAsJFdI6XHXhmvh.png)](https://asciinema.org/a/T5YD1v1mJSJAsJFdI6XHXhmvh)
+[![Control node asciicast](https://asciinema.org/a/T5YD1v1mJSJAsJFdI6XHXhmvh.png)](https://asciinema.org/a/T5YD1v1mJSJAsJFdI6XHXhmvh)
 
 ### Target Node (Click to watch)
-[![asciicast](https://asciinema.org/a/tceGVaV1Ezl7oDmcCTOaxkGMU.png)](https://asciinema.org/a/tceGVaV1Ezl7oDmcCTOaxkGMU)
+[![Target node asciicast](https://asciinema.org/a/tceGVaV1Ezl7oDmcCTOaxkGMU.png)](https://asciinema.org/a/tceGVaV1Ezl7oDmcCTOaxkGMU)
