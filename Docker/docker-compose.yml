@@ -4,10 +4,10 @@ services:
   web:
     build:
       # directory of Dockerfile
-      context: .
+      context: ..
 
       # Dockerfile name
-      dockerfile: Dockerfile.web
+      dockerfile: Docker/Dockerfiles/Dockerfile.web
 
     # resulting image tag
     image: ferasmaali/webapp:latest
@@ -15,7 +15,7 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - ./src:/code
+      - ../src:/code
     environment:
       # to wait mysql server until it's ready
       WAIT_HOSTS: db:3306
@@ -34,10 +34,10 @@ services:
   db:
     build:
       # directory
-      context: .
+      context: ..
 
       # Dockerfile name
-      dockerfile: Dockerfile.db
+      dockerfile: Docker/Dockerfiles/Dockerfile.db
 
     # resulting image tag
     image: ferasmaali/mysql:latest

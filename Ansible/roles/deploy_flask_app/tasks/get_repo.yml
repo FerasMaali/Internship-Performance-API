@@ -1,0 +1,14 @@
+---
+
+- name: Install git
+  yum:
+    name: git
+    state: present
+
+- name: Clone the repo
+  git:
+    repo: "https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/FerasMaali/Internship-Performance-API.git"
+    dest: "{{ repo_dir }}"
+    update: yes
+    depth: 1
+

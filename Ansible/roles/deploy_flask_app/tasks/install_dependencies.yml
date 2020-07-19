@@ -1,5 +1,4 @@
 ---
-# tasks file for roles/docker
 
 - name: Install epel-release & yum-utils
   yum:
@@ -44,10 +43,4 @@
       - docker-ce-cli
       - containerd.io
     state: present
-
-- name: Start docker
-  service:
-    name: docker
-    state: started
-    enabled: yes
 

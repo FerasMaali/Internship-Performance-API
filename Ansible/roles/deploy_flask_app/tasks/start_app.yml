@@ -1,0 +1,24 @@
+---
+
+- name: docker-compose down (to stop any running old versions of our app)
+  docker_compose:
+    project_src: "{{ repo_dir }}/Docker"
+    state: absent
+
+- name: docker-compose up (start our app)
+  docker_compose:
+    project_src: "{{ repo_dir }}/Docker"
+    build: yes
+    state: present
+  environment:
+    MYSQL_USER: "{{ mysql_user }}"
+    MYSQL_PASSWORD: "{{ mysql_password }}"
+
+- name: Create data-collecting cron jobs
+  cron:
+    name: data collector
+    job: >
+      export MYSQL_USER={{ mysql_user }};
+      export MYSQL_PASSWORD={{ mysql_password }};
+      {{ repo_dir }}/src/data_collector/store_current_performance_in_db
+

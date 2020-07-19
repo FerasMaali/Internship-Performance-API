@@ -1,0 +1,18 @@
+---
+
+- name: Install required packages & python dependencies
+  include_tasks:
+    file: install_dependencies.yml
+
+- name: Start any required services on the system
+  include_tasks:
+    file: start_services.yml
+
+- name: Get the repo from Github
+  include_tasks:
+    file: get_repo.yml
+
+- name: Start web app, db & data-collecting cron jobs
+  include_tasks:
+    file: start_app.yml
+

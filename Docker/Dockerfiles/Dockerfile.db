@@ -2,4 +2,4 @@
 FROM mysql:latest
 
 # Volume is not working with Ansible, so I did this instead
-COPY db_stuff/init_db.sql /docker-entrypoint-initdb.d/init_db.sql
+COPY src/db_stuff/init_db.sql /docker-entrypoint-initdb.d/init_db.sql
