@@ -6,7 +6,7 @@ In this task, I implemented an API that provides info about the system it is run
 ## General Structure
 
 ### Assumptions
-- The system we are deploying to is assumed to be Centos7
+- The system we are setting our app on is assumed to be Centos7
 - We have root privileges on that system
 
 ### Web App
@@ -17,11 +17,15 @@ In this task, I implemented an API that provides info about the system it is run
 ### Database
 - Used Mysql to store the collected data about the system
 - Used cron jobs and shell scripts to collect data and store it in the DB
-- Mysql server was deployed to a separate Docker container which was built using [Dockerfile.db](https://github.com/FerasMaali/Internship-Performance-API/blob/master/Dockerfile.db)
+- Mysql server was set up using a separate Docker container which was built using [Dockerfile.db](https://github.com/FerasMaali/Internship-Performance-API/blob/master/Dockerfile.db)
+
+### Data collection
+- Used a script that collects current usage of system resources and stores info in the database
+- Created a cron job to call this script every specific period of time
 
 ### Miscellaneous
 - Used Docker Compose to manage running these two containers
-- Used Ansible to deploy our API
+- Used Ansible to set up our API
 - Used Ansible Vault to manage our secrets (Mysql & Github credentials)
 
 ## The API
@@ -38,7 +42,7 @@ In this task, I implemented an API that provides info about the system it is run
 ## Demo
 
 ### Control Node (Click to watch)
-[![Control node asciicast](https://asciinema.org/a/T5YD1v1mJSJAsJFdI6XHXhmvh.png)](https://asciinema.org/a/T5YD1v1mJSJAsJFdI6XHXhmvh)
+[![Control node asciicast](https://asciinema.org/a/uNvlcmlpMzNq8DGDOpUBCtwD6.png)](https://asciinema.org/a/uNvlcmlpMzNq8DGDOpUBCtwD6)
 
 ### Target Node (Click to watch)
-[![Target node asciicast](https://asciinema.org/a/tceGVaV1Ezl7oDmcCTOaxkGMU.png)](https://asciinema.org/a/tceGVaV1Ezl7oDmcCTOaxkGMU)
+[![Target node asciicast](https://asciinema.org/a/s7i1omhQPUX0r2c8S5HG1A962.png)](https://asciinema.org/a/s7i1omhQPUX0r2c8S5HG1A962)
