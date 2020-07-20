@@ -6,7 +6,7 @@ cd $DIR
 
 . ./collector_functions
 
-cd ../..
+cd ../../Docker
 
 echo "INSERT INTO \`cpu_usage\` \
 	(\`usage\`) VALUES (`cpu_usage`);" \
