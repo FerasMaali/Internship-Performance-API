@@ -1,6 +1,9 @@
 
 localhost
 
+[group1]
+server1 ansible_user=root
+
 [group2]
 server2 ansible_user=root
 
